@@ -205,3 +205,143 @@ def interleave(x, y):
     print(x)
 interleave('hi', 'ha')
 interleave('aaa', 'zzz')
+
+
+# Highest word Score
+
+# helper function
+def to_num(char):
+    return ord(char) - 96
+
+def high(x):
+    
+    st_nums = [list(word) for word in x.split(' ')]
+    res_1 = []
+    for i in st_nums:
+        res_1.append({'word': ''.join(i), 'number': sum([to_num(z) for z in i ])})
+    
+    res_2 = max(res_1, key=lambda n: n['number'])
+    return res_2['word']
+
+# Which are in?
+
+a1 = ["arp", "live", "strong"]
+
+a2 = ["lively", "alive", "harp", "sharp", "armstrong"]
+
+def in_array(array1, array2):
+    inner = []
+    for i in array1:
+        for j in array2:
+            if i in j:
+                inner.append(i)
+    inner_dic = {}
+    for i in inner:
+        if i in inner_dic:
+            continue
+        else:
+            inner_dic[i] = 1
+    res = [k for k, v in inner_dic.items()]
+    res.sort()
+    return res
+            
+
+
+print(in_array(a1, a2))
+
+
+# First non-repeating character
+
+def first_non_repeating_letter(string):
+    if string == '': return ''
+
+    dick = {}
+
+    for i in string.lower():
+        if i in dick:
+            dick[i] += 1
+        else:
+            dick[i] = 1
+    
+    res = [k for k,v in dick.items() if v == 1]
+
+    if len(res) == 0:
+        return ''
+
+    if res[0] in string:
+        return res[0]
+    else: return res[0].upper()
+
+
+print(first_non_repeating_letter('sTreSS'))
+
+ltest = [ {'name': 'Bart'}, {'name': 'Jack'}, {'name': 'Lisa'}, {'name': 'Maggie'}]
+# Format a string of names like 'Bart, Lisa & Maggie'
+def namelist(names):
+    if len(names) == 0: return ''
+
+    name_str = []
+
+    for i in names:
+        for k, v in i.items():
+            name_str.append(v)
+    if len(name_str) == 1:
+        return ''.join(name_str)
+    if len(name_str) == 2:
+        return ' & '.join(name_str)
+    else:
+        x = ', '.join(name_str[: -2])
+        y = ' & '.join(name_str[-2:])
+        return f'{x}, {y}'
+
+
+
+print(namelist(ltest))
+
+# Turn String Input into Hash
+
+ting = "a=1, b=2, c=3, d=4"
+
+def str_to_hash(st):
+    if st == '': return {}
+    one = st.split(', ')
+    two = [x.split('=') for x in one]
+    three = [[i[0], int(i[1])] for i in two]
+    dick = {}
+    for i in three:
+        dick[i[0]] = i[1]
+    return dick
+
+print(str_to_hash(ting))
+
+# Encrypt this
+def encrypt_this(text):
+    if text == '': return ''
+    one = list(text)
+    two = []
+    three = ''
+    four = ''
+    five = ''
+    six = []
+    for i in range(len(one)):
+        if i == 0:
+            two.append(ord(one[i]))
+        elif i == 1:
+            three += one[i]
+        elif i == len(one) - 1:
+            five += one[i]
+        else:
+            four += one[i]
+    if ' ' in text:
+        temp = text.split(' ')
+        for i in temp:
+            six.append(encrypt_this(i))
+        res2 = ' '.join(six)
+        return res2
+    res = f'{two[0]}{five}{four}{three}'
+    return res
+
+
+print(encrypt_this('Thank you Piotr for all your help'))
+# print(encrypt_this('good'))
+# print(encrypt_this('hello world'))
