@@ -374,3 +374,45 @@ print(permute_a_palindrome('adamm'))
 print(permute_a_palindrome('junk'))
 
 
+# Valid Credit Card Number
+
+def validate(n):
+
+    even = []
+    even2 = []
+    odd = []
+    odd2 = []
+    if len(str(n)) % 2 == 0:
+        even += list(str(n))
+        even = [int(i) for i in even]
+        for i in range(len(even)):
+            if (i + 1) % 2 != 0:
+                even2.append(even[i]*2)
+            else:
+                even2.append(even[i])
+        for i in range(len(even2)):
+            if even2[i] > 9:
+                even2[i] -=9
+        return sum(even2) % 10 == 0
+    else:
+        odd += list(str(n))
+        odd = [int(i) for i in odd]
+        for i in range(len(odd)):
+            if (i+1) % 2 == 0:
+                odd2.append(odd[i]*2)
+            else:
+                odd2.append(odd[i])
+
+        for i in range(len(odd2)):
+            if odd2[i] > 9:
+                odd2[i] -=9
+        return sum(odd2) % 10 == 0
+            
+
+            
+print('\n'*5)
+print(validate(123))
+print(validate(1))
+print(validate(2121))
+print(validate(1230))
+
