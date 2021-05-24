@@ -345,3 +345,32 @@ def encrypt_this(text):
 print(encrypt_this('Thank you Piotr for all your help'))
 # print(encrypt_this('good'))
 # print(encrypt_this('hello world'))
+
+# Permute a Palindrome
+
+def permute_a_palindrome (input_s): 
+    input_s = input_s.replace(' ', '').lower()
+    
+    d = dict()
+
+    for i in input_s:
+        if i in d:
+            d[i] += 1
+        else:
+            d[i] = 1
+
+    odd = 0
+
+    for k, v in d.items():
+        if v % 2 != 0 and odd == 0:
+            odd += 1
+        elif v % 2 != 0 and odd > 0:
+            return False
+    return True
+
+print(permute_a_palindrome('too t'))
+print(permute_a_palindrome('madam'))
+print(permute_a_palindrome('adamm'))
+print(permute_a_palindrome('junk'))
+
+
