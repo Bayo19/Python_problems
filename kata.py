@@ -416,3 +416,27 @@ print(validate(1))
 print(validate(2121))
 print(validate(1230))
 
+
+# 5kyu - Scramblies
+
+def scramble(s1, s2):
+    one = s1
+    two = s2
+    three = ''
+    if len(s1) == len(s2) and ''.join(sorted(s1)) != ''.join(sorted(s2)):
+        return False
+        
+    for i in two:
+        if i in one:
+            three +=i
+    if three == two: return True
+    return False
+            
+    
+print('\n'*10)
+print(scramble('rkqodlw', 'world'))
+print(scramble('cedewaraaossoqqyt', 'codewars'))
+print(scramble('katas', 'steak'))
+print(scramble('scriptjava', 'javascript'))
+print(scramble('scriptingjava', 'javascript'))
+
