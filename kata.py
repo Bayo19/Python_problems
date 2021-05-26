@@ -470,3 +470,59 @@ print(domain_name("www.xakep.ru"))
 print(domain_name("icann.org"))
 print(domain_name("uc9g02k.de/error"))
 
+# Consonant value - 6kyu
+# len(ss) > 1 and
+def solve(s):
+    d = {}
+    for i in range(1, 27):
+        d[chr(i + 96)] = i
+    
+    ss = ''
+
+    # removing vowels and separating consonant substrings
+    # with a comma
+    for i in s:
+        if i not in 'aeiou':
+            ss+= i
+        else:
+            if len(ss):
+                if ss[-1] != ',':
+                    ss += ','
+            else:
+                continue
+    # split the string and put each substring into own array            
+    x = ss.split(',')
+    x  = [list(i) for i in x]
+    
+    # change each char in nested array into number
+    for i in range(len(x)):
+        for j in range(len(x[i])):
+            x[i][j] = d[x[i][j]]
+
+    from functools import reduce
+    
+    # initialize an empty array
+    app = []
+    
+    # reduce each sub array in x and append to app array
+    for i in range(len(x)):
+        if x[i] != []:
+            f = reduce((lambda a,b: a + b), x[i])
+            app.append(f)
+    
+    # return the largest number in app array
+    return max(app)
+
+    
+    
+
+print(solve("zodiac"))
+print(solve("chruschtschov"))
+print(solve("khrushchev"))
+print(solve("strength"))
+print(solve("catchphrase"))
+print(solve("twelfthstreet"))
+print(solve("mischtschenkoana"))
+
+
+
