@@ -420,23 +420,53 @@ print(validate(1230))
 # 5kyu - Scramblies
 
 def scramble(s1, s2):
-    one = s1
-    two = s2
-    three = ''
+
+    s3 = ''
     if len(s1) == len(s2) and ''.join(sorted(s1)) != ''.join(sorted(s2)):
         return False
         
-    for i in two:
-        if i in one:
-            three +=i
-    if three == two: return True
+    for i in s2:
+        if i in s1:
+            s3 +=i
+    if s3 == s2: return True
     return False
             
     
-print('\n'*10)
+# print('\n'*10)
 print(scramble('rkqodlw', 'world'))
 print(scramble('cedewaraaossoqqyt', 'codewars'))
 print(scramble('katas', 'steak'))
 print(scramble('scriptjava', 'javascript'))
 print(scramble('scriptingjava', 'javascript'))
+
+
+# Extract domain name from a URL 5kyu
+
+def domain_name(url):
+    res = ''
+    if '://' not in url:
+        x = url.split('.')
+        if x[0] == 'www':
+            res += x[1]
+            return res
+        else:
+            res += x[0]
+            return res
+
+    x = url.split('://')
+    x = x[1:]
+    x = ''.join(x)
+    x = x.split('.')
+
+    if x[0] == 'www':
+        res+=x[1]
+    else: res+=x[0]
+    return res
+
+print(domain_name("http://github.com/carbonfive/raygun"))
+print(domain_name("http://www.zombie-bites.com"))
+print(domain_name("https://www.cnet.com"))
+print(domain_name("www.xakep.ru"))
+print(domain_name("icann.org"))
+print(domain_name("uc9g02k.de/error"))
 
