@@ -513,9 +513,6 @@ def solve(s):
     # return the largest number in app array
     return max(app)
 
-    
-    
-
 print(solve("zodiac"))
 print(solve("chruschtschov"))
 print(solve("khrushchev"))
@@ -525,4 +522,131 @@ print(solve("twelfthstreet"))
 print(solve("mischtschenkoana"))
 
 
+# +1 Array
 
+def up_array(arr):
+
+    if arr == []: return None
+    for i in arr:
+        if i < 0 or i >= 10:
+            return None
+
+    arr_s = [str(x) for x in arr]
+    if arr_s == None: return None
+    else:
+        arr_s =  list(str(int(''.join(arr_s))+1))
+        arr_s_res = [int(x) for x in arr_s]
+        print(arr_s_res)
+
+        return arr_s_res
+
+
+print(up_array([2,3,9]))
+print(up_array([4,3,2,5]))
+print(up_array([1,-9]))
+print(up_array([]))
+
+# Decipher this
+import re
+
+def decipher_this(string):
+    res = string.split(' ')
+    r = [re.split(r'(\d+)', s) for s in res]
+    r = [x[1:] for x in r ]
+    for i in r:
+        i[0] = chr(int(i[0]))
+        i[1] = list(i[1])
+        i[1][-1], i[1][0] = i[1][0], i[1][-1]
+        
+    r = ' '.join([i[0]+ ''.join(i[1]) for i in r])
+    return r
+    
+    
+
+print(decipher_this('72olle 103doo 100ya'))
+print(decipher_this('82yade 115te 103o'))
+
+
+
+def whatday(num):
+    d = {
+1: 'Sunday',
+2: 'Monday',
+3: 'Tuesday',
+4: 'Wednesday',
+5: 'Thursday',
+6: 'Friday',
+7: 'Saturday'
+}
+
+    return d[num]
+
+
+
+# string repeat
+
+def repeat_str(repeat, string):
+    arr = []
+    for i in range(0, repeat):
+        arr.append(string)
+    return ''.join(arr)
+
+
+#
+
+def remove_exclamation_marks(s):
+   return s.replace('!', '')
+
+
+print(remove_exclamation_marks('Hello!!!'))
+
+#
+
+def reverse_words(s):
+    ss =  s.split(' ')
+    return ' '.join(list(reversed(ss)))
+
+print(reverse_words('The greatest victory is that which requires no battle'))
+
+
+# The Vowel Code
+
+def encode(st):
+    v = 'aeiou'
+    d = {'a': 1, 'e': 2, 'i': 3, 'o': 4, 'u': 5}
+    l_st = list(st)
+    for i in range(len(l_st)):
+        if l_st[i] not in v:
+            continue
+        else:
+            l_st[i] = str(d[l_st[i]])
+    return ''.join(l_st)
+
+
+def decode(st):
+    n = '12345'
+    d = {'1': 'a', '2': 'e', '3': 'i', '4': 'o', '5': 'u'}
+    l_st = list(st)
+    for i in range(len(l_st)):
+        if l_st[i] not in n:
+            continue
+        else:
+            l_st[i] = d[l_st[i]]
+    return ''.join(l_st)
+    
+
+print(encode('hello'))
+print(encode('How are you today?'))
+print(encode('This is an encoding test.'))
+print(decode('h2ll4'))
+
+
+def is_divisible(n,x,y):
+    x = str(n/x).split('.')
+    y = str(n/y).split('.')
+    if x[1] == '0' and y[1] == '0':
+        return True
+    return False
+
+
+print(is_divisible(12, 3, 4))
