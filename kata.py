@@ -650,3 +650,35 @@ def is_divisible(n,x,y):
 
 
 print(is_divisible(12, 3, 4))
+
+# Counting Duplicates
+
+def duplicate_count(text):
+    # Your code goes here
+    if text == '': return 0
+
+    d = {}
+    for i in text.lower():
+        if i in d:
+            d[i] += 1
+        else:
+            d[i] = 1
+
+    res = [k for k, v in d.items() if v > 1]
+    return len(res)
+     
+
+print(duplicate_count(""))
+print(duplicate_count("abcde"))
+print(duplicate_count("abcdeaa"))
+print(duplicate_count("abcdeaB"))
+print(duplicate_count("Indivisibilities"))
+
+# Word to binary
+
+def word_to_bin(word):
+    # code away!!!
+    w = [bin(ord(i)) for i in list(word)]
+    return [i.replace('b', '') for i in w]
+    
+print(word_to_bin('man'))
