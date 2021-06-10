@@ -1,3 +1,5 @@
+# starting again
+
 # 1 remove first and last char from comma separated string
 def arr(string):
     if len(string) == 0:
@@ -682,3 +684,132 @@ def word_to_bin(word):
     return [i.replace('b', '') for i in w]
     
 print(word_to_bin('man'))
+
+
+# rev seq
+
+def reverse_seq(n):
+    res = []
+    for i in reversed(range(1,n+1)):
+        res.append(i)
+    return res
+        
+print(reverse_seq(6))
+
+# Mexican Wave - 6kyu
+# skip over spaces
+def wave(people):
+    r = []
+    for i in range(len(people)):
+        r.append(list(people))
+    
+    for i in range(len(r)):
+        for j in range(len(r[i])):
+            if j == i:
+                r[i][j] = r[i][j].upper()
+   
+    res = [''.join(i) for i in r if ''.join(i) != people]
+    return res
+
+print(wave('hello'))
+print(wave('two words'))
+
+# Kebabize - Camel case to kebab case 6kyu
+def kebabize(string):
+    n = '1 2 3 4 5 6 7 8 9 0'
+    s = ''
+    r = ''
+    for i in string:
+        if i not in n:
+            s += i
+        else:
+            continue
+    for i in s:
+        if i == i.lower():
+            r += i
+        else:
+            r += '-'
+            r +=  i.lower()
+    if len(r) < 1:
+        return ''
+    elif r[0] == '-':
+        return r[1:]
+    return r
+
+
+print(kebabize('camelsHaveThreeHumps'))
+print(kebabize('camelsHave3Humps'))
+print(kebabize('42'))
+print(kebabize('SOS'))
+
+
+# dashatize it 6kyu
+
+def dashatize(n):
+    if type(n) != int:
+        return ''
+    n_s_l = list(str(n))
+    s = ''
+    for i in n_s_l:
+        if int(i) % 2 == 0:
+            s += i
+        else:
+            if len(s) > 1 and s[-1] == '-':
+                s += i
+                s+= '-'
+            else:
+                s += '-'
+                s += i
+                s+= '-'
+    if s[0] == '-' and s[-1] == '-':
+        return s[1:-1]
+    elif s[-1] == '-':
+        return s[:-1]
+    elif s[0] == '-':
+        return s[1:]
+
+    return s
+
+print(dashatize(274))
+print(dashatize(6815))
+print(dashatize(5311))
+print(dashatize(86320))
+print(dashatize(974302))
+
+
+# Multiplication Tables
+
+def multiplication_table(row,col):
+    r = []
+    for i in range(row):
+        r.append([])
+    for i in range(len(r)):
+        for j in range(col):
+            r[i].append((i+1)*(j+1))
+    return r
+            
+                
+
+print(multiplication_table(2,2))
+print(multiplication_table(3,3))
+print(multiplication_table(3,4))
+print(multiplication_table(4,4))
+print(multiplication_table(2,5))
+
+# Count letters in a string
+
+def letter_count(s):
+    #your code here
+    d = {}
+    for i in s:
+        if i == i.lower():
+            if i in d:
+                d[i] += 1
+            else:
+                d[i] =  1
+        else:
+            continue
+    return d
+
+
+print(letter_count('codewars'))
