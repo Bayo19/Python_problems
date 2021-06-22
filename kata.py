@@ -978,3 +978,65 @@ def bottom_up_fib(n):
 print(bottom_up_fib(10))
 
 
+# Multiplation table for number - 8kyu 
+def multi_table(number):
+    res = ''
+    for i in range(1, 11):
+        if i != 10:
+            res += f'{i} * {number} = {i * number}\n'
+        elif i == 10:
+            res += f'{i} * {number} = {i * number}'
+    return res
+
+print(multi_table(5))
+
+# Twice as old - 8kyu
+
+def twice_as_old(dad_years_old, son_years_old):
+    twice_son = son_years_old * 2
+    if dad_years_old > twice_son:
+        return dad_years_old - twice_son
+    elif twice_son == dad_years_old:
+        return 0
+    else:
+        return twice_son - dad_years_old
+
+print(twice_as_old(36, 7))
+
+#
+arr = arr = ['a', 'b', 'c', 'd', 'e']
+def first(seq, n = 1): 
+    return seq[0:n]
+
+print(first(arr))
+print(first(arr, 2))
+print(first(arr, 3))
+print(first(arr, 0))
+
+# Character with longest consecutive repetition -6kyu
+
+def longest_repetition(chars):
+    if chars == '': return (', 0')
+    if len(chars) == 2 and chars[0] != chars[1]:
+        return (chars[0], 1)
+    char = ''
+    max = 0
+    num = 1
+    for i in range(1,len(chars)):
+        if chars[i] == chars[i-1]:
+            num += 1
+            if num > max:
+                max = num
+                char = chars[i]
+        elif chars[i] != chars[i-1]:
+            num = 1
+    return (char, max)
+        
+
+print(longest_repetition('aaaabb'))
+print(longest_repetition("bbbaaabaaaa"))
+print(longest_repetition("cbdeuuu900"))
+print(longest_repetition("abbbbb"))
+print(longest_repetition("aabb"))
+print(longest_repetition("ba"))
+print(longest_repetition(""))
