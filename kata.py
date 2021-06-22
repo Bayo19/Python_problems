@@ -813,4 +813,168 @@ def letter_count(s):
 print(letter_count('codewars'))
 
 
+# Sort the odd
+
+def sort_array(source_array):
+    odds = []
+    for i in range(len(source_array)):
+        if source_array[i] % 2 != 0:
+            odds.append(source_array[i])
+            source_array[i] = 'x'
+
+    sorted_odds = sorted(odds)
+    
+    while len(sorted_odds):
+        for i in range(len(source_array)):
+            if source_array[i] == 'x':
+                source_array[i] = sorted_odds.pop(0)  
+            else: continue
+
+    return source_array
+
+
+print(sort_array([7, 1]))
+print(sort_array([5, 8, 6, 3, 4]))
+print(sort_array([9, 8, 7, 6, 5, 4, 3, 2, 1, 0]))
+
+
+# PYTHON SCREENING TASK
+
+def is_palindrome(text):
+  if len(text) <=1: return True
+
+  text = list(text)
+  temp_text = list(text)
+
+  def rev(text):
+      for l in range(len(text) // 2):
+          r = len(text) - 1 - l
+          text[l], text[r] = text[r], text[l]
+      return text
+
+  return temp_text == rev(text)
+print(is_palindrome('redivider'))
+print(is_palindrome('drive'))
+print(is_palindrome('kayak'))
+print(is_palindrome('11211'))
+print(is_palindrome('1115544'))
+
+def find_occurrences(text, itemsList):
+    text_list = []
+    count = 0
+    for i in text:
+        text_list.append(i.split())
+    
+    for i in text_list:
+        for j in range(len(i)):
+            if itemsList in i[j]:
+                count += 1
+    return count
+
+
+print(find_occurrences(["welcome to our Python program", "Python is my favorite language!", "I am afraid of Pythons", "I love Python"], "Python"))
+
+print(find_occurrences(["this is the best day", "Python is the best language for learning programming", "I am learning", "I love learning"], "learning"))
+
+print(find_occurrences(["welcome", "language", "I am", "I love"], "Python"))
+
+print(find_occurrences(["What are you doing?", "you like programming?", "We are students", "We are learners"], "are"))
+
+print(find_occurrences(["welcome welcome", "wikipedia", "wonderland", "we"], "w"))
+
+
+# replace module 2 function with lambda expression
+def is_a_lambda(v):
+  LAMBDA = lambda:0
+  return isinstance(v, type(LAMBDA)) and v.__name__ == LAMBDA.__name__
+
+
+def module_2(num):
+  return num % 2
+
+
+m2 = lambda num : num % 2
+
+task_count = 5
+
+def increase_task_count(task_count):
+    task_count += 1
+    return task_count
+
+print(increase_task_count(task_count))
+
+# try and catch zerodivisionerror
+
+def divide(divisor, dividend):
+    try:
+        dividend / divisor
+    except ZeroDivisionError:
+        print('Divison by zero not allowed')
+
+
+print(divide(0, 10))
+
+# Sum of pairs
+# Giacomo Sorbi solution
+
+def sum_pairs(ints, s):
+    seen = []
+    for item in ints:
+        if s-item in seen: return [s-item, item]
+        if item not in seen: seen += [item]
+    return None    
+print(sum_pairs([11,3,7,5], 10))
+print(sum_pairs([4,3,2,3,4], 6))
+print(sum_pairs([0,0,-2,3], 2))
+print(sum_pairs([10, 5, 2, 3, 7, 5], 10))
+
+# Reverse inside parentheses
+# not correct yet
+def reverse_in_parentheses(string):
+    r = string[string.find('(')+1:string.rfind(')')]
+    res = ''
+    if '(' in r and ')' in r:
+        return None  
+    else:
+        return string.replace(r, ''.join(list(reversed(r))))
+    
+
+print(reverse_in_parentheses("h(el)lo"))
+print(reverse_in_parentheses('h((el)l)o'))
+print(reverse_in_parentheses("a ((d e) c b)"))
+print(reverse_in_parentheses("one (two (three) four)"))
+print(reverse_in_parentheses("one (ruof ((rht)ee) owt)") )
+
+# memoization practice and dynamic programming
+
+def fib(n, prevValues = {}):
+    if n in prevValues:
+        return prevValues[n]
+    
+    if n <= 2:
+        result = 1
+    else:
+        result = fib(n -1, prevValues) + fib(n -2, prevValues)
+    prevValues[n] = result
+    return result
+
+print(fib(11))
+
+# bottom up approach
+
+def bottom_up_fib(n):
+    if n <= 2: return 1
+    bottom_up = [None] * (n+1)
+    
+    bottom_up[1] = 1
+    bottom_up[2] = 1
+    # print(bottom_up)
+    
+    for i in range(3, n+1):
+        bottom_up[i] = bottom_up[i-1] + bottom_up[i-2]
+        # print(bottom_up)
+    return bottom_up[n]
+    
+print(bottom_up_fib(10))
+
 
