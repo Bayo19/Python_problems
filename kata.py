@@ -1040,3 +1040,72 @@ print(longest_repetition("abbbbb"))
 print(longest_repetition("aabb"))
 print(longest_repetition("ba"))
 print(longest_repetition(""))
+
+
+# Remove duplicate words
+
+w = 'alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta'
+
+def remove_duplicate_words(s):
+    ret = ''
+    
+    l_s = s.split(' ')
+    for i in l_s:
+        if i not in ret:
+            ret += i
+            ret+=' '
+    return ret[:-1]
+
+print(remove_duplicate_words(w))
+
+# Sum two arrays
+
+def sum_arrays(array1, array2):
+    
+    if len(array1) > 1 and array1[0] == 0:
+        while array1[0] == 0:
+            array1 = array1[1:]
+    if len(array2) > 1 and array2[0] == 0:
+        while array2[0] == 0:
+            array2 = array2[1:]
+            
+    if len(array1) < 1 and len(array2) < 1:
+        return []
+    elif len(array1) < 1 and len(array2) >= 1:
+        return array2
+    elif len(array2) < 1 and len(array1) >= 1:
+        return array1
+    
+    def to_string(arr):
+        for i in range(len(arr)):
+            arr[i] = str(arr[i])
+        return arr
+    
+    st_1, st_2 = ''.join(to_string(array1)), ''.join(to_string(array2))
+    
+    one, two = int(st_1), int(st_2)
+    sum = list(str(one + two))
+    
+    if sum[0] == '-':
+        sum[1] = str(int(sum[1]) - (int(sum[1])*2))
+        sum = sum[1:]
+        
+    result =  [int(i) for i in sum]
+    
+    return result
+    
+    
+    
+  
+print(sum_arrays([], []))  
+print(sum_arrays([3,2,9], [1,2]))
+print(sum_arrays([4,7,3],[1,2,3]))
+print(sum_arrays([1],[5,7,6]))
+print(sum_arrays([3,2,6,6],[-7,2,2,8]))
+print(sum_arrays([4,0,7,2,2], []))
+print(sum_arrays([-4, 5, 7, 3, 6], [5, 3, 4, 5]))
+print(sum_arrays([], [9]))
+print(sum_arrays([4], []))
+print(sum_arrays([], [0, 2, 6, 3]))
+print(sum_arrays([0,0,7,2,0], []))
+
