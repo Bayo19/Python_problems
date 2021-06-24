@@ -34,6 +34,11 @@ print(get_sub_arrays(exampleInput2, desiredSum2))
 
 # test case 3
 # sliding window technique cannot handle negative numbers in this case so solution will not be full
+
+# Kadan's algorithm is optimal for this question when it includes all integers, positive, negative and 0
+
+# Sliding window is not recommended
+
 exampleInput3 = [-1, -4, 0, 5, 3, 2 , 1]
 desiredSum3 = 5
 
