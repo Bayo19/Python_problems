@@ -42,4 +42,4 @@ print(get_sub_arrays(exampleInput2, desiredSum2))
 exampleInput3 = [-1, -4, 0, 5, 3, 2 , 1]
 desiredSum3 = 5
 
-print(get_sub_arrays(exampleInput3, desiredSum3))
+print(get_sub_arrays(exampleInput3, desiredSum3), ' - has negative numbers and 0 so not complete')
