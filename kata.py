@@ -813,7 +813,6 @@ def letter_count(s):
 
 
 print(letter_count('codewars'))
-<<<<<<< HEAD
 
 
 # Sort the odd
@@ -1111,6 +1110,3 @@ print(sum_arrays([], [9]))
 print(sum_arrays([4], []))
 print(sum_arrays([], [0, 2, 6, 3]))
 print(sum_arrays([0,0,7,2,0], []))
-
-=======
->>>>>>> 4d8cb77bb1a6bb78ce1f5d050a80aee62d054bfd
